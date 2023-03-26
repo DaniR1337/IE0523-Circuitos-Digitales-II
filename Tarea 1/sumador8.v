@@ -15,9 +15,10 @@ wire [3:0] Q1, Q2;
 
 // Instancias de módulo sumador4
 sumador4 bloque1 (.CLK(CLK), .ENB(ENB), .RCI(RCI), .MODO(MODO), .A(A[3:0]), .B(B[3:0]), .Q(Q1[3:0]), .RCO(C1));
-sumador4 bloque2 (.CLK(CLK), .ENB(ENB), .RCI(C1), .MODO(MODO), .A(A[7:4]), .B(B[7:4]), .Q(Q2[7:4]), .RCO(RCO));
+sumador4 bloque2 (.CLK(CLK), .ENB(ENB), .RCI(C1), .MODO(MODO), .A(A[7:4]), .B(B[7:4]), .Q(Q2[3:0]), .RCO(RCO));
 
 // Se concatenan los resultados de ambos sumadores
-assign Q = {Q2, Q1}; 
+always @*
+    Q = {Q2, Q1}; 
 
 endmodule
