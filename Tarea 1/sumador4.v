@@ -13,20 +13,26 @@ module sumador4 (   input   CLK,
                     input   [3:0] A,
                     input   [3:0] B,
                     output  reg [3:0] Q,
-                    output  RCO);
+                    output  reg RCO);
 
-if (ENB) begin
-    assign RCO = (A[3] & B[3]);
-end
+wire [3:0] negB;
+assign compB = ~B + 1'b1;
+
 
 always @(posedge CLK) begin
     if (ENB) begin
         case ({MODO, RCI})
-            2'b00?:  Q <= Q ;
-            2'b010:  Q <= A + B;
-            2'b011:  Q <= A + B + 1'b1;
-            2'b10?:  Q <= A - B;
-            2'b11?:  Q <= 4'b0;
+            3'b00x: Q <= Q ;
+            3'b010: begin
+                        Q <= A + B;
+                        RCO = (A[3] & B[3]);
+                    end
+            3'b011: Q <= A + B + 1'b1;
+            3'b10x: begin
+                        Q <= A + negB;
+                        RCO = (A[3] & negB[3]);
+                    end
+            3'b11x: Q <= 4'b0;
         endcase
     end
 end
