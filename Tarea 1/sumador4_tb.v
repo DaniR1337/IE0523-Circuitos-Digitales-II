@@ -34,7 +34,7 @@ module sumador4_tb;
         $dumpvars(0, sumador4_tb);
         CLK = 0;
         ENB = 1;
-        MODO = 2'b01;
+        MODO = 2'b10;
         RCI = 0;
         A = 4;
         B = 3;
@@ -42,10 +42,12 @@ module sumador4_tb;
         #10;
         A = 7;
         B = 2;
+        MODO = 2'b00;
 
         #10;
         A = 4'b1111;
         B = 1'b1;
+        MODO = 2'b11;
 
         #10;
         A = 0;

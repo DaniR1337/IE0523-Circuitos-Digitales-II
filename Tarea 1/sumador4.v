@@ -12,7 +12,7 @@ module sumador4 (   input   CLK,
                     input   [1:0] MODO,
                     input   [3:0] A,
                     input   [3:0] B,
-                    output  reg [3:0] Q  = 0,
+                    output  reg [3:0] Q,
                     output  reg RCO);
 
 wire [3:0] negB;
@@ -26,11 +26,12 @@ always @(posedge CLK) begin
             3'b010: begin
                         {RCO, Q} <= A + B;
                     end
-            3'b011: Q <= A + B + 1'b1;
-            3'b10x: begin
-                        {RCO, Q} <= A + negB;
+            3'b011: {RCO, Q} <= A + B + 1'b1;
+            3'b100: begin
+                        {RCO, Q} <= A + ~B + 1'b1;
                     end
-            3'b11x: Q <= 4'b0;
+            3'b101: {RCO, Q} <= A + ~B + 2'b10;
+            3'b110: Q <= 4'b0;
         endcase
     end
 end
