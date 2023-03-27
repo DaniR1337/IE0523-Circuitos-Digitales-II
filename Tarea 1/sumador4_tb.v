@@ -10,6 +10,7 @@ module sumador4_tb;
     reg [1:0] MODO;
     reg [3:0] A;
     reg [3:0] B;
+    reg RCI;
 
     // Outputs
     wire [3:0] Q;
@@ -20,6 +21,7 @@ module sumador4_tb;
         .CLK(CLK),
         .ENB(ENB),
         .MODO(MODO),
+        .RCI(RCI),
         .A(A),
         .B(B),
         .Q(Q),
@@ -33,6 +35,7 @@ module sumador4_tb;
         CLK = 0;
         ENB = 1;
         MODO = 2'b01;
+        RCI = 0;
         A = 4;
         B = 3;
 
@@ -41,8 +44,8 @@ module sumador4_tb;
         B = 2;
 
         #10;
-        A = 1;
-        B = 6;
+        A = 4'b1111;
+        B = 1'b1;
 
         #10;
         A = 0;
