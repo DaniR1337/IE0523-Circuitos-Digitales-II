@@ -30,7 +30,8 @@ always @(posedge CLK) begin
             3'b100: begin
                         {RCO, Q} <= A + ~B + 1'b1;
                     end
-            3'b101: {RCO, Q} <= A + ~B + 2'b10;
+            //3'b101: {RCO, Q} <= A + ~B + 2'b10;
+            3'b101: {RCO, Q} <= 5'b11111;
             3'b110: Q <= 4'b0;
         endcase
     end
