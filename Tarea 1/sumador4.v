@@ -15,10 +15,6 @@ module sumador4 (   input   CLK,
                     output  reg [3:0] Q,
                     output  reg RCO);
 
-wire [3:0] negB;
-assign negB = ~B + 1'b1;
-
-
 always @(posedge CLK) begin
     if (ENB) begin
         case ({MODO, RCI})

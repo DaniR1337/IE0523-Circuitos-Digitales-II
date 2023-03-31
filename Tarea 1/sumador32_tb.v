@@ -1,23 +1,23 @@
 `timescale 1ns/1ns
-`include "sumador4.v"
+//`include "sumador32.v"
+`include "32b.v"
 
-
-module sumador4_tb;
+module sumador32_tb;
 
     // Inputs
     reg CLK;
     reg ENB;
     reg [1:0] MODO;
-    reg [3:0] A;
-    reg [3:0] B;
+    reg [31:0] A;
+    reg [31:0] B;
     reg RCI;
 
     // Outputs
-    wire [3:0] Q;
+    wire [31:0] Q;
     wire RCO;
 
     // Instantiate the design under test
-    sumador4 dut (
+    sumador32 dut (
         .CLK(CLK),
         .ENB(ENB),
         .MODO(MODO),
@@ -30,8 +30,8 @@ module sumador4_tb;
 
     // Initialize the inputs
     initial begin
-        $dumpfile("sumador4_tb.vcd");
-        $dumpvars(0, sumador4_tb);
+        $dumpfile("sumador32_tb.vcd");
+        $dumpvars(0, sumador32_tb);
 
         
         RCI = 0;
@@ -43,16 +43,16 @@ module sumador4_tb;
 
         #10;
         MODO = 2'b01;
-        A = 4;
+        A = 17;
         B = 3;
 
         #10;
-        RCI = 1;
-        A = 4'b1111;
-        B = 1'b1;
+        A = 32'h0000FFF0;
+        B = 32'h00000010;
 
         #10;
-        RCI = 0;
+        #10;
+        #10;
         A = 7;
         B = 2;
 
@@ -65,14 +65,13 @@ module sumador4_tb;
         A = 4;
         B = 3;
 
-        #10
-        A = 2;
-        B = 6;
-
         #10;
-        
         A = 4'b1111;
         B = 1'b1;
+
+        #10;
+        A = 3;
+        B = 8;
 
         #10;
         // PRUEBA #3 MANTENER EL VALOR EN MODO 00 
