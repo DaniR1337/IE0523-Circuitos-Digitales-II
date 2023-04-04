@@ -24,7 +24,7 @@ always @(posedge CLK) begin
                     end
             3'b011: {RCO, Q} <= A + B + 1'b1;
             3'b100: begin
-                        {RCO, Q} <= A + ~B + 1'b1;
+                        {RCO, Q} <= A - B;
                     end
             //3'b101: {RCO, Q} <= A + ~B + 2'b10;
             3'b101: {RCO, Q} <= 5'b11111;

@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 //`include "sumador32.v"
-`include "32b.v"
+`include "sumador32.v"
 
 module sumador32_tb;
 
@@ -27,6 +27,7 @@ module sumador32_tb;
         .Q(Q),
         .RCO(RCO)
     );
+    
 
     // Initialize the inputs
     initial begin
@@ -41,14 +42,15 @@ module sumador32_tb;
         ENB = 1;
         CLK = 0;
 
+
         #10;
         MODO = 2'b01;
         A = 17;
         B = 3;
 
         #10;
-        A = 32'h0000FFF0;
-        B = 32'h00000010;
+        A = 1;
+        B = 32'hFFFFFFFF;
 
         #10;
         #10;

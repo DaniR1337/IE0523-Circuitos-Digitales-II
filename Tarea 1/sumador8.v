@@ -11,9 +11,12 @@ module sumador8 (   input   CLK,
 
 wire C1;
 wire [3:0] Q1, Q2;
-reg W1; // Preguntar sobre este método de anticipación
-reg [3:0] W2, W3;
+reg W1; 
+reg [3:0] W2;
 
+
+// Este always solo es para calcular el RCO inmediato
+// Modo 1 es suma, modo 2 es resta. 
 always @(A or B) begin
     if (MODO == 2'b01) begin
         // Wires para el carreo (del bloque 1 a bloque 2) y para las salidas
@@ -21,7 +24,6 @@ always @(A or B) begin
     end
 
     if (MODO == 2'b10) begin
-        W3 = ~B + 1'b1;
         {W1, W2} = A[3:0] - B[3:0];
     end
 end
