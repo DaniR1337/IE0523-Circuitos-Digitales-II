@@ -27,7 +27,7 @@ reg W1, W2, W3, W4, W5, W6, W7, W8;
 reg [3:0] W;
 always @(A or B) begin
     if (MODO == 2'b01) begin
-        {W1, W} = A[3:0] + B[3:0];
+        {W1, W} = A[3:0] + B[3:0] + RCI;
         {W2, W} = A[7:4] + B[7:4] + W1; 
         {W3, W} = A[11:8] + B[11:8] + W2;
         {W4, W} = A[15:12] + B[15:12] + W3;
@@ -43,6 +43,9 @@ always @(A or B) begin
         {W5, W} = A[19:16] - B[19:16] + {W4, 4'b0};
         {W6, W} = A[23:20] - B[23:20] + {W5, 4'b0};
         {W7, W} = A[27:24] - B[27:24] + {W6, 4'b0};
+    end
+    if (MODO == 2'b11 & RCI == 0) begin
+        {W1, W2, W3, W4, W5, W6, W7, W8} = 0;
     end
 end
 

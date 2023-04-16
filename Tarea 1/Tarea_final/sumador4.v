@@ -28,8 +28,10 @@ always @(posedge CLK) begin
             3'b100: begin
                         {RCO, Q} <= A - B;
                     end
-            3'b101: {RCO, Q} <= 5'b11111; // When subtracting and RCI is 1, propagate base-2 sign
+            // When subtracting and RCI is 1, propagate base-2 
+            3'b101: {RCO, Q} <= 5'b11111;
             3'b110: Q <= 4'b0;
+            3'b111: Q <= 4'b0;
         endcase
     end
 end

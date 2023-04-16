@@ -28,42 +28,47 @@ module probador32(
     wire RCO;
 
     // Initialize the inputs
-    initial begin   
+    initial begin 
+ 
         RCI = 0;
 
         // PRUEBA #1 SUMA DE 4 BITS
         MODO = 2'b11;
+        A = 6969;
+        B = 42; 
         ENB = 1;
         CLK = 0;
 
 
         #10;
         MODO = 2'b01;
-        A = 17;
-        B = 3;
+        A = 16547;
+        B = 32;
 
         #10;
         A = 1;
         B = 32'hFFFFFFFF;
 
         #10;
-        #10;
-        #10;
-        A = 7;
-        B = 2;
+        RCI = 1;
+        A = 99998;
+        B = 1;
 
         #10;
+        RCI = 0;
+        A = 67543;
+        B = 33;
         // PRUEBA #2 RESTA DE 4 BITS
         MODO = 2'b11; 
 
         #10;
         MODO = 2'b10;
-        A = 4;
-        B = 3;
+        A = 5000;
+        B = 800;
 
         #10;
-        A = 4'b1111;
-        B = 1'b1;
+        A = 123456789;
+        B = 333333;
 
         #10;
         A = 3;
@@ -72,19 +77,23 @@ module probador32(
         #10;
         // PRUEBA #3 MANTENER EL VALOR EN MODO 00 
         MODO = 2'b01; // OPERACION INICIAL
-        A = 5;
-        B = 3;
+        A = 32'd6603;
+        B = 32'd366;
         
         #10;
+        A = 6666;
+        B = 9999;
         MODO = 2'b00; // MANTENER RESULTADO DE SUMA
 
         #10;
         // PRUEBA #4 MANTENER EL VALOR CUANDO ENB = 0
         MODO = 2'b10; // OPERACION INICIAL
-        A = 3;
-        B = 1;
+        A = 9999999;
+        B = 32'h74261A;
 
         #10;
+        A = 12345;
+        B = 6789;
         ENB = 0;
 
         #10;

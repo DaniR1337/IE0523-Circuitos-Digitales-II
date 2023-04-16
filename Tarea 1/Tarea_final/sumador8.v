@@ -35,6 +35,10 @@ always @(A or B) begin
     if (MODO == 2'b10) begin
         {W1, W2} = A[3:0] - B[3:0];
     end
+
+    if (MODO == 2'b11 & RCI == 0) begin
+        W1 = 0; // Propagates clean mode to further blocks
+    end
 end
 
 // sumador4 instances

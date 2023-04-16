@@ -31,8 +31,10 @@ module probador8(
     initial begin
         RCI = 0;
 
-        // PRUEBA #1 SUMA DE 4 BITS
+        // PRUEBA #1 SUMA DE 8 BITS
         MODO = 2'b11;
+        A = 64;
+        B = 4;
         ENB = 1;
         CLK = 0;
 
@@ -48,9 +50,13 @@ module probador8(
         #10;
         A = 7;
         B = 2;
+        RCI = 1;
 
         #10;
-        // PRUEBA #2 RESTA DE 4 BITS
+        RCI = 0;
+        // PRUEBA #2 RESTA DE 8 BITS
+        A = 1;
+        B = 2;
         MODO = 2'b11; 
 
         #10;
@@ -59,8 +65,8 @@ module probador8(
         B = 3;
 
         #10;
-        A = 4'b1111;
-        B = 1'b1;
+        A = 200;
+        B = 50;
 
         #10;
         A = 3;
@@ -74,6 +80,8 @@ module probador8(
         
         #10;
         MODO = 2'b00; // MANTENER RESULTADO DE SUMA
+        A = 7;
+        B = 8;
 
         #10;
         // PRUEBA #4 MANTENER EL VALOR CUANDO ENB = 0
@@ -83,6 +91,9 @@ module probador8(
 
         #10;
         ENB = 0;
+        A = 4;
+        B = 5;
+
 
         #10;
         $finish;

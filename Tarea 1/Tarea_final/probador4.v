@@ -42,18 +42,20 @@ module probador4(
         B = 3;
 
         #10;
-        RCI = 1;
         A = 4'b1111;
         B = 1'b1;
 
         #10;
-        RCI = 0;
-        A = 7;
+        RCI = 1;
+        A = 6;
         B = 2;
 
         #10;
+        RCI = 0;
         // PRUEBA #2 RESTA DE 4 BITS
         MODO = 2'b11; 
+        A = 7;
+        B = 1;
 
         #10;
         MODO = 2'b10;
@@ -77,6 +79,8 @@ module probador4(
         
         #10;
         MODO = 2'b00; // MANTENER RESULTADO DE SUMA
+        A = 7;
+        B = 2;
 
         #10;
         // PRUEBA #4 MANTENER EL VALOR CUANDO ENB = 0
@@ -86,6 +90,8 @@ module probador4(
 
         #10;
         ENB = 0;
+        A = 7;
+        B = 3;
 
         #10;
         $finish;
