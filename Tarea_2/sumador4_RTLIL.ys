@@ -1,0 +1,20 @@
+# read design 
+read_verilog sumador4.v
+
+# elaborate design hierarchy
+hierarchy -check -top sumador4
+
+# the high-level stuff
+proc; opt;
+
+# techmap
+techmap; opt;
+
+#Generate pdf output
+show -format pdf -prefix sumador4_RTLIL_synth
+
+# cleanup
+clean
+
+# write synthesized design
+write_verilog sumador4_RTLIL_synth.v
