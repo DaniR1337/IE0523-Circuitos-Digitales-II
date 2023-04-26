@@ -52,6 +52,8 @@ module probador4(
         B = 2;
 
         #100;
+        A = 6;
+        B = 9;
         // PRUEBA #2 RESTA DE 4 BITS
         MODO = 2'b11; 
 
@@ -76,6 +78,8 @@ module probador4(
         B = 3;
         
         #100;
+        A = 4;
+        B = 2;
         MODO = 2'b00; // MANTENER RESULTADO DE SUMA
 
         #100;
