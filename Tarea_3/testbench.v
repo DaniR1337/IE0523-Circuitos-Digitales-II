@@ -1,5 +1,5 @@
 `timescale 1ns/1ns
-`include "atm.v"
+`include "me.v"
 `include "probador.v"
 
 module testbench;
@@ -19,7 +19,7 @@ module testbench;
     end
 
     // Instantiate the design under test as well as the tester
-    atm U0 (
+    me U0 (
         .CLK(CLK),
         .RESET(RESET),
         .TARJETA_RECIBIDA(TARJETA_RECIBIDA),

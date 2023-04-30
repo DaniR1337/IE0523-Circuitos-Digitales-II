@@ -33,8 +33,45 @@ module probador(
 
     // Initialize the inputs
     initial begin
-        #10
+        TARJETA_RECIBIDA = 0;
+        CLK = 0;
+        RESET = 0;
+        #5;
+        
+        #5;
+        RESET = 1;
+        TARJETA_RECIBIDA = 1;
+        #10;
+        PIN = 16'h6575;
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 6;
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 5;
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 3;
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 5;
+        
+        
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 6;
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 5;
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 3;
+        #10;
+        DIGITO_STB = 1;
+        DIGITO = 3;
+        #10;
         $finish;
+
     end
 
     // Toggle the clock signal
