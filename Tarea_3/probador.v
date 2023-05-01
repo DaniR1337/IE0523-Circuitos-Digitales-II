@@ -34,6 +34,7 @@ module probador(
     // Initialize the inputs
     initial begin
         TARJETA_RECIBIDA = 0;
+        MONTO_STB = 0;
         CLK = 0;
         RESET = 0;
         #5;
@@ -65,11 +66,17 @@ module probador(
         DIGITO = 5;
         #10;
         DIGITO_STB = 1;
-        DIGITO = 3;
+        DIGITO = 7;
         #10;
         DIGITO_STB = 1;
-        DIGITO = 3;
+        DIGITO = 5;
         #10;
+        TIPO_TRANS = 0;
+        MONTO = 272727;
+        MONTO_STB = 1;
+        #10
+        MONTO_STB = 0;
+        #100
         $finish;
 
     end
