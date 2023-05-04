@@ -5,7 +5,7 @@
 module testbench;
 
     // Inputs
-    wire CLK, RESET, TARJETA_RECIBIDA, DIGITO_STB, TIPO_TRANS, MONTO_STB;
+    wire CLK, RESET, TARJETA_RECIBIDA, DIGITO_STB, TIPO_TRANS, MONTO_STB, ENB;
     wire [15:0] PIN;
     wire [3:0] DIGITO;
     wire [31:0] MONTO;
