@@ -2,6 +2,10 @@
 
 Código elaborado durante curso IE0523
 
+Proyecto1b: Puerta de seguridad
+![image](https://user-images.githubusercontent.com/93664317/236942878-22ec4b4b-6179-4b6d-a6d7-2b3c9d1c04d3.png)
+
+
 Máquina de estados: Cajero automático
 ![image](https://user-images.githubusercontent.com/93664317/236082463-99606062-fae0-476e-9fa4-4e6c3bf0ff14.png)
 
