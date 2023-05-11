@@ -29,22 +29,26 @@ initial begin
     $dumpfile("resultados.vcd");
     $dumpvars(-1, DUT);
 
+    DIGITO_STB = 0;
     CLK = 0;
     RESET = 0;
     DIGITO = 0;
     SOLICITUD_ACCESO = 1;
 
     // INICIA LA OBTENCIÓN DEL PIN CORRECTO
-    #10;
+    #5;
+    #5;
+    //DIGITO_STB = 0;
+
     DIGITO = 6;
     #10;
     SOLICITUD_ACCESO = 0;
-    DIGITO = 9;
     #10;
+    DIGITO = 9;
+    #20;
     DIGITO = 6;
-    #10;
+    #20;
     DIGITO = 9;
-    #10;
     #50;
 
     
@@ -55,12 +59,14 @@ initial begin
     DIGITO = 3;
     #10;
     SOLICITUD_ACCESO = 0;
+    #10;
     DIGITO = 9;
+    #10;
     #10;
     DIGITO = 6;
     #10;
-    DIGITO = 9;
     #10;
+    DIGITO = 9;
     #50;
 
 
@@ -70,12 +76,14 @@ initial begin
     DIGITO = 6;
     #10;
     SOLICITUD_ACCESO = 0;
+    #10;
     DIGITO = 3;
+    #10;
     #10;
     DIGITO = 6;
     #10;
-    DIGITO = 9;
     #10;
+    DIGITO = 9;
     #50;
 
     // INICIA LA OBTENCIÓN DEL PIN CORRECTO
@@ -84,12 +92,14 @@ initial begin
     DIGITO = 6;
     #10;
     SOLICITUD_ACCESO = 0;
+    #10;
     DIGITO = 9;
+    #10;
     #10;
     DIGITO = 3;
     #10;
-    DIGITO = 9;
     #10;
+    DIGITO = 9;
     #50;
 
     // INICIA LA OBTENCIÓN DEL PIN CORRECTO
@@ -98,18 +108,25 @@ initial begin
     DIGITO = 6;
     #10;
     SOLICITUD_ACCESO = 0;
+    #10;
     DIGITO = 9;
+    #10;
     #10;
     DIGITO = 6;
     #10;
-    DIGITO = 3;
     #10;
-    #50;
+    DIGITO = 3;
+    #55;
+
+    RESET = 1;
+    #10;
+    RESET = 0;
 
     #100;
     $finish;
 end
 
 always #5 CLK = !CLK;
+always #10 DIGITO_STB = !DIGITO_STB;
 
 endmodule
