@@ -10,9 +10,10 @@ reg [2:0]   ESTADO;
 reg [2:0]   PROX_ESTADO;  
 
 // Declaración de estados
-parameter ESPERA    = 3'b001;
-parameter OPERACION = 3'b010;
-parameter FINAL     = 3'b100;
+parameter ESPERA    = 4'b0001;
+parameter SET_SS    = 4'b0010;
+parameter OPERACION = 4'b0100;
+parameter FINAL     = 4'b1000;
 
 // Descripción de Flip-Flops
 always @(posedge SCK) begin
