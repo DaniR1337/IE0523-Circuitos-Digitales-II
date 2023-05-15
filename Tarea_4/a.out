@@ -7,21 +7,9 @@
 :vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
 :vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
 :vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
-S_000001b58d5ac500 .scope module, "testi" "testi" 2 22;
+S_000001abd5eeebe0 .scope module, "TX" "TX" 2 1;
  .timescale 0 0;
-v000001b58d4d4b20_0 .var "CLK", 0 0;
-v000001b58d4d4bc0_0 .var "CPH", 0 0;
-v000001b58d4d4c60_0 .var "CPK", 0 0;
-o000001b58d4d7058 .functor BUFZ 1, C4<z>; HiZ drive
-v000001b58d4d4d00_0 .net "CS", 0 0, o000001b58d4d7058;  0 drivers
-v000001b58d4d4da0_0 .var "MISO", 0 0;
-o000001b58d4d70b8 .functor BUFZ 1, C4<z>; HiZ drive
-v000001b58d4d4e40_0 .net "MOSI", 0 0, o000001b58d4d70b8;  0 drivers
-v000001b58d4d4ee0_0 .var "RESET", 0 0;
-v000001b58d520430_0 .net "SCK", 0 0, L_000001b58d520c50;  1 drivers
-S_000001b58d5ac690 .scope module, "DUT" "TX" 2 32, 2 1 0, S_000001b58d5ac500;
- .timescale 0 0;
-    .port_info 0 /INPUT 1 "CPK";
+    .port_info 0 /INPUT 1 "CKP";
     .port_info 1 /INPUT 1 "CPH";
     .port_info 2 /INPUT 1 "CLK";
     .port_info 3 /INPUT 1 "RESET";
@@ -29,41 +17,77 @@ S_000001b58d5ac690 .scope module, "DUT" "TX" 2 32, 2 1 0, S_000001b58d5ac500;
     .port_info 5 /OUTPUT 1 "SCK";
     .port_info 6 /OUTPUT 1 "CS";
     .port_info 7 /OUTPUT 1 "MOSI";
-v000001b58d5ac8b0_0 .net "CLK", 0 0, v000001b58d4d4b20_0;  1 drivers
-v000001b58d4a2ee0_0 .var "CONTADOR", 1 0;
-v000001b58d5aad80_0 .net "CPH", 0 0, v000001b58d4d4bc0_0;  1 drivers
-v000001b58d5aae20_0 .net "CPK", 0 0, v000001b58d4d4c60_0;  1 drivers
-v000001b58d5aaec0_0 .net "CS", 0 0, o000001b58d4d7058;  alias, 0 drivers
-v000001b58d4d4810_0 .net "MISO", 0 0, v000001b58d4d4da0_0;  1 drivers
-v000001b58d4d48b0_0 .net "MOSI", 0 0, o000001b58d4d70b8;  alias, 0 drivers
-v000001b58d4d4950_0 .net "RESET", 0 0, v000001b58d4d4ee0_0;  1 drivers
-v000001b58d4d49f0_0 .net "SCK", 0 0, L_000001b58d520c50;  alias, 1 drivers
-E_000001b58d4c53d0 .event posedge, v000001b58d5ac8b0_0;
-L_000001b58d520c50 .reduce/and v000001b58d4a2ee0_0;
-    .scope S_000001b58d5ac690;
+P_000001abd5eeed70 .param/l "ESPERA" 0 2 13, C4<001>;
+P_000001abd5eeeda8 .param/l "FINAL" 0 2 15, C4<100>;
+P_000001abd5eeede0 .param/l "OPERACION" 0 2 14, C4<010>;
+o000001abd5f36f98 .functor BUFZ 1, C4<z>; HiZ drive
+v000001abd5f02ae0_0 .net "CKP", 0 0, o000001abd5f36f98;  0 drivers
+o000001abd5f36fc8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001abd5eea840_0 .net "CLK", 0 0, o000001abd5f36fc8;  0 drivers
+v000001abd5eea8e0_0 .var "CONTADOR", 1 0;
+o000001abd5f37028 .functor BUFZ 1, C4<z>; HiZ drive
+v000001abd5eea980_0 .net "CPH", 0 0, o000001abd5f37028;  0 drivers
+o000001abd5f37058 .functor BUFZ 1, C4<z>; HiZ drive
+v000001abd5eeaa20_0 .net "CS", 0 0, o000001abd5f37058;  0 drivers
+v000001abd5eeaac0_0 .var "ESTADO", 2 0;
+o000001abd5f370b8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001abd5eeab60_0 .net "MISO", 0 0, o000001abd5f370b8;  0 drivers
+o000001abd5f370e8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001abd5eeac00_0 .net "MOSI", 0 0, o000001abd5f370e8;  0 drivers
+v000001abd5eeaca0_0 .var "PROX_ESTADO", 2 0;
+o000001abd5f37148 .functor BUFZ 1, C4<z>; HiZ drive
+v000001abd5eead40_0 .net "RESET", 0 0, o000001abd5f37148;  0 drivers
+v000001abd5eeade0_0 .net "SCK", 0 0, L_000001abd5eeae80;  1 drivers
+E_000001abd5f35a00 .event anyedge, v000001abd5eeaac0_0;
+E_000001abd5f35480 .event posedge, v000001abd5eea840_0;
+L_000001abd5eeae80 .reduce/and v000001abd5eea8e0_0;
+    .scope S_000001abd5eeebe0;
 T_0 ;
-    %wait E_000001b58d4c53d0;
-    %load/vec4 v000001b58d4a2ee0_0;
+    %wait E_000001abd5f35480;
+    %load/vec4 v000001abd5eea8e0_0;
     %cmpi/e 3, 0, 2;
     %jmp/0xz  T_0.0, 4;
     %pushi/vec4 0, 0, 2;
-    %assign/vec4 v000001b58d4a2ee0_0, 0;
+    %assign/vec4 v000001abd5eea8e0_0, 0;
     %jmp T_0.1;
 T_0.0 ;
-    %load/vec4 v000001b58d4a2ee0_0;
+    %load/vec4 v000001abd5eea8e0_0;
     %addi 1, 0, 2;
-    %assign/vec4 v000001b58d4a2ee0_0, 0;
+    %assign/vec4 v000001abd5eea8e0_0, 0;
 T_0.1 ;
     %jmp T_0;
     .thread T_0;
-    .scope S_000001b58d5ac500;
+    .scope S_000001abd5eeebe0;
 T_1 ;
-    %vpi_call 2 28 "$dumpfile", "resultados.vcd" {0 0 0};
-    %vpi_call 2 29 "$dumpvars", 32'sb11111111111111111111111111111111, S_000001b58d5ac500 {0 0 0};
-    %end;
-    .thread T_1;
+    %wait E_000001abd5f35a00;
+    %load/vec4 v000001abd5eeaac0_0;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 3;
+    %cmp/u;
+    %jmp/1 T_1.0, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 3;
+    %cmp/u;
+    %jmp/1 T_1.1, 6;
+    %dup/vec4;
+    %pushi/vec4 4, 0, 3;
+    %cmp/u;
+    %jmp/1 T_1.2, 6;
+    %pushi/vec4 1, 0, 3;
+    %store/vec4 v000001abd5eeaca0_0, 0, 3;
+    %jmp T_1.4;
+T_1.0 ;
+    %jmp T_1.4;
+T_1.1 ;
+    %jmp T_1.4;
+T_1.2 ;
+    %jmp T_1.4;
+T_1.4 ;
+    %pop/vec4 1;
+    %jmp T_1;
+    .thread T_1, $push;
 # The file index is used to find the file name in the following table.
 :file_names 3;
     "N/A";
     "<interactive>";
-    "testi.v";
+    "TX.v";
