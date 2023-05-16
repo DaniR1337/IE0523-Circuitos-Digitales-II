@@ -10,7 +10,7 @@ module ME(
     output reg ACCESO_ACEPTADO, ACCESO_DENEGADO
 );
 
-// Declaración de estados
+// Codificación de estados
 parameter ESPERA                = 5'b00001;
 parameter INTRODUCIENDO_PIN_1   = 5'b00010;
 parameter INTRODUCIENDO_PIN_2   = 5'b00100;
