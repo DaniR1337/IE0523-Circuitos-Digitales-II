@@ -53,7 +53,7 @@ initial begin
 
     
 
-    // INICIA LA OBTENCIÓN DEL PIN CORRECTO
+    // INICIA LA OBTENCIÓN DEL PIN INCORRECTO
     #10;
     SOLICITUD_ACCESO = 1;
     DIGITO = 3;
@@ -70,7 +70,7 @@ initial begin
     #50;
 
 
-    // INICIA LA OBTENCIÓN DEL PIN CORRECTO
+    // INICIA LA OBTENCIÓN DEL PIN INCORRECTO
     #10;
     SOLICITUD_ACCESO = 1;
     DIGITO = 6;
@@ -96,13 +96,13 @@ initial begin
     DIGITO = 9;
     #10;
     #10;
-    DIGITO = 3;
+    DIGITO = 6;
     #10;
     #10;
     DIGITO = 9;
     #50;
 
-    // INICIA LA OBTENCIÓN DEL PIN CORRECTO
+    // INICIA LA OBTENCIÓN DEL PIN INCORRECTO
     #10;
     SOLICITUD_ACCESO = 1;
     DIGITO = 6;
@@ -110,7 +110,9 @@ initial begin
     SOLICITUD_ACCESO = 0;
     #10;
     DIGITO = 9;
+    RESET = 1;
     #10;
+    RESET = 0;
     #10;
     DIGITO = 6;
     #10;
@@ -118,9 +120,6 @@ initial begin
     DIGITO = 3;
     #55;
 
-    RESET = 1;
-    #10;
-    RESET = 0;
 
     #100;
     $finish;
