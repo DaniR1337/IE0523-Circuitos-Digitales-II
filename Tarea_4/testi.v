@@ -48,7 +48,7 @@ initial begin
     $dumpfile("resultados.vcd");
     $dumpvars(-1, testi);
     CLK = 0;
-    CKP = 0;
+    CKP = 1;
     ENB = 0;
     #50;
     ENB = 1;
