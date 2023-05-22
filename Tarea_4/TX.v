@@ -4,7 +4,7 @@ module TX(  input   CKP, CPH, CLK, ENB, RESET, MISO,
 
 // Registros internos
 reg [1:0]   CONTADOR = 0;
-reg [15:0]   REGISTRO = 16'h0605;
+reg [15:0]  REGISTRO = 16'h0605;
 reg [2:0]   ESTADO = 0;  
 reg [2:0]   PROX_ESTADO;  
 reg         SCKL;
@@ -15,14 +15,17 @@ parameter MODO0     = 3'b001;
 parameter MODO1     = 3'b011;
 parameter MODO2     = 3'b110;
 parameter MODO3     = 3'b100;
-//parameter FINAL     = 3'b101;
 
 // Descripción de Flip-Flops
-always @(posedge SCK or negedge SCK) begin
+always @(posedge SCK or negedge SCK or posedge ENB or negedge ENB) begin
+    ESTADO <= PROX_ESTADO;    
+end
+
+always @(*) begin
     if (!RESET) begin
         ESTADO <= ESPERA;
-    end else begin
-        ESTADO <= PROX_ESTADO;    
+        REGISTRO <= 16'h0605;
+        SCKL <= 0;
     end
 end
 
@@ -31,15 +34,17 @@ assign CS = !ENB;
 
 // Generación del SCK
 always @(posedge CLK) begin
-    if (!CS) begin
-        SCKL = (CPH) ? !CONTADOR[1] : CONTADOR[1];
-        if (CONTADOR == 2'b11) begin
-            CONTADOR <= 2'b00;
+    if (ESTADO != ESPERA) begin
+        if (!CS) begin
+            SCKL = CONTADOR[1];
+            if (CONTADOR == 2'b11) begin
+                CONTADOR <= 2'b00;
+            end else begin
+                CONTADOR <= CONTADOR + 1;
+            end       
         end else begin
-            CONTADOR <= CONTADOR + 1;
-        end       
-    end else begin
-        SCKL = CKP; 
+            SCKL = CKP; 
+        end
     end
 end
 assign SCK = SCKL;
@@ -48,7 +53,7 @@ assign SCK = SCKL;
 always @(*) begin
     case (ESTADO)
         ESPERA: begin
-            case ({CKP, CPH, !CS})
+            case ({CKP, CPH, CS})
                 3'b001:      PROX_ESTADO = MODO0;
                 3'b011:      PROX_ESTADO = MODO1;
                 3'b101:      PROX_ESTADO = MODO2;
@@ -60,14 +65,9 @@ always @(*) begin
         MODO1:      PROX_ESTADO = (ENB) ? MODO1 : ESPERA;
         MODO2:      PROX_ESTADO = (ENB) ? MODO2 : ESPERA;
         MODO3:      PROX_ESTADO = (ENB) ? MODO3 : ESPERA;
-        //FINAL:      PROX_ESTADO = ESPERA;
         default:    PROX_ESTADO = ESPERA;
     endcase
 end
-/*
-always @(CS) begin
-    ESTADO = (!CS) ? ESTADO : ESPERA;
-end*/
 
 assign MOSI = REGISTRO[15];
 

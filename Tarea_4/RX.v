@@ -14,16 +14,15 @@ parameter MODO0     = 3'b001;
 parameter MODO1     = 3'b011;
 parameter MODO2     = 3'b110;
 parameter MODO3     = 3'b100;
-//parameter FINAL     = 3'b101;
 
 // Descripción de Flip-Flops
-always @(posedge SCK or negedge SCK) ESTADO <= PROX_ESTADO; 
+always @(posedge SCK or negedge SCK or posedge SS or negedge SS) ESTADO <= PROX_ESTADO; 
   
 // Lógica de próximo estado
 always @(*) begin
     case (ESTADO)
         ESPERA: begin
-            case ({CKP, CPH, !SS})
+            case ({CKP, CPH, SS})
                 3'b001:      PROX_ESTADO = MODO0;
                 3'b011:      PROX_ESTADO = MODO1;
                 3'b101:      PROX_ESTADO = MODO2;
@@ -35,14 +34,9 @@ always @(*) begin
         MODO1:      PROX_ESTADO = (!SS) ? MODO1 : ESPERA;
         MODO2:      PROX_ESTADO = (!SS) ? MODO2 : ESPERA;
         MODO3:      PROX_ESTADO = (!SS) ? MODO3 : ESPERA;
-        //FINAL:      PROX_ESTADO = ESPERA;
         default:    PROX_ESTADO = ESPERA;
     endcase
 end
-/*
-always @(SS) begin
-    ESTADO = (!SS) ? ESTADO : ESPERA;
-end*/
 
 assign MISO = REGISTRO[15];
 
