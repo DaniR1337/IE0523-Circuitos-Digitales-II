@@ -11,12 +11,6 @@ module probador(output reg  CKP, CPH, CLK, ENB, RESET);
         ENB = 1;
         #800;
 
-        RESET = 0;
-        #40;
-        RESET = 1;
-        #100;
-        
-        CLK = 0;
         ENB = 0;
         CPH = 1;
         CKP = 0;
@@ -24,7 +18,6 @@ module probador(output reg  CKP, CPH, CLK, ENB, RESET);
         ENB = 1;
         #800;
 
-        CLK = 0;
         ENB = 0;
         CPH = 0;
         CKP = 1;
@@ -32,7 +25,6 @@ module probador(output reg  CKP, CPH, CLK, ENB, RESET);
         ENB = 1;
         #800;
 
-        CLK = 0;
         ENB = 0;
         CPH = 1;
         CKP = 1;
