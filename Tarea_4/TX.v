@@ -22,14 +22,6 @@ always @(posedge SCK or negedge SCK or posedge ENB or negedge ENB) begin
     ESTADO <= PROX_ESTADO;    
 end
 
-always @(*) begin
-    if (!RESET) begin
-        ESTADO <= ESPERA;
-        REGISTRO <= 16'h0605;
-        SCKL <= 0;
-    end
-end
-
 // Un controlador se encargaría de CS
 assign CS = !ENB; 
 
@@ -46,28 +38,36 @@ always @(posedge CLK) begin
         end else begin
             SCKL = CKP; 
         end
+    end else begin
+        SCKL = CKP;
     end
 end
 assign SCK = SCKL;
 
 // Lógica de proximo estado
 always @(*) begin
-    case (ESTADO)
-        ESPERA: begin
-            case ({CKP, CPH, CS, BIT_CONTADOR > 4'b1111})
-                4'b0010:      PROX_ESTADO = MODO0;
-                4'b0110:      PROX_ESTADO = MODO1;
-                4'b1010:      PROX_ESTADO = MODO2;
-                4'b1110:      PROX_ESTADO = MODO3;
-                default:    PROX_ESTADO = ESPERA;
-            endcase
-        end
-        MODO0:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO0) : ESPERA;
-        MODO1:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO1) : ESPERA;
-        MODO2:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO2) : ESPERA;
-        MODO3:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO3) : ESPERA;
-        default:    PROX_ESTADO = ESPERA;
-    endcase
+    if (RESET) begin
+        case (ESTADO)
+            ESPERA: begin
+                case ({CKP, CPH, CS, BIT_CONTADOR > 4'b1111})
+                    4'b0010:      PROX_ESTADO = MODO0;
+                    4'b0110:      PROX_ESTADO = MODO1;
+                    4'b1010:      PROX_ESTADO = MODO2;
+                    4'b1110:      PROX_ESTADO = MODO3;
+                    default:    PROX_ESTADO = ESPERA;
+                endcase
+            end
+            MODO0:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO0) : ESPERA;
+            MODO1:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO1) : ESPERA;
+            MODO2:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO2) : ESPERA;
+            MODO3:      PROX_ESTADO = (ENB) ? ((BIT_CONTADOR > 4'b1111) ? ESPERA : MODO3) : ESPERA;
+            default:    PROX_ESTADO = ESPERA;
+        endcase        
+    end else begin
+       ESTADO = 0;
+       BIT_CONTADOR = 0; 
+       CONTADOR = 0;
+    end
 end
 
 assign MOSI = REGISTRO[15];
