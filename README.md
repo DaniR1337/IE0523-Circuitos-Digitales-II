@@ -12,3 +12,7 @@ Máquina de estados: Cajero automático
 
 Sumador-Restador de 4 bits:
 ![OndasBellas](https://user-images.githubusercontent.com/93664317/228085884-04fb166a-866c-46ea-b59a-90839e5fc570.png)
+
+Tarea 4: Serial Peripheral Interface (SPI):
+![image](https://github.com/DaniR1337/IE0523-Circuitos-Digitales-II/assets/93664317/3cb10b78-3cfd-466f-a51d-8df8d33ad1d7)
+
