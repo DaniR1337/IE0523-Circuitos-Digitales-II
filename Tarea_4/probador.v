@@ -3,7 +3,7 @@ module probador(output reg  CKP, CPH, CLK, ENB, RESET);
     // Initialize the inputs
     initial begin
         RESET = 1; CLK = 0; ENB = 0; CPH = 0; CKP = 0;
-        #60; ENB = 1;
+        #200; ENB = 1;
         #800; ENB = 0;  CPH = 1; CKP = 0;
         #60; ENB = 1;
         #750; CKP = 1; 

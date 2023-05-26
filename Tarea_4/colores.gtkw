@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Thu May 25 22:40:03 2023
+[*]
+[dumpfile] "/mnt/c/Users/Kataku/OneDrive/Documentos/GitHub/IE0523-Circuitos-Digitales-II/Tarea_4/resultados.vcd"
+[dumpfile_mtime] "Thu May 25 22:30:11 2023"
+[dumpfile_size] 14873
+[savefile] "/mnt/c/Users/Kataku/OneDrive/Documentos/GitHub/IE0523-Circuitos-Digitales-II/Tarea_4/colores.gtkw"
+[timestart] 0
+[size] 1098 600
+[pos] -48 -54
+*-10.620140 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+[treeopen] testbench.DUT.
+[sst_width] 272
+[signals_width] 291
+[sst_expanded] 1
+[sst_vpaned_height] 145
+@28
+[color] 1
+testbench.DUT.Transmisor.CLK
+[color] 1
+testbench.DUT.Transmisor.SCK
+[color] 2
+testbench.DUT.Transmisor.CS
+[color] 3
+testbench.DUT.Transmisor.CKP
+[color] 3
+testbench.DUT.Transmisor.CPH
+[color] 4
+testbench.DUT.Transmisor.ESTADO[2:0]
+[color] 4
+testbench.DUT.Transmisor.PROX_ESTADO[2:0]
+@22
+[color] 5
+testbench.DUT.Transmisor.REGISTRO[15:0]
+@28
+[color] 6
+testbench.DUT.Transmisor.MOSI
+[color] 6
+testbench.DUT.Transmisor.MISO
+[color] 1
+testbench.DUT.Transmisor.RESET
+@22
+[color] 2
+testbench.DUT.Transmisor.BIT_CONTADOR[31:0]
+@28
+[color] 2
+testbench.DUT.Transmisor.CONTADOR[1:0]
+[pattern_trace] 1
+[pattern_trace] 0
