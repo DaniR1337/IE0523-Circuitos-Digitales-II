@@ -67,6 +67,7 @@ always @(*) begin
        ESTADO = 0;
        BIT_CONTADOR = 0; 
        CONTADOR = 0;
+       REGISTRO = 16'h0605;
     end
 end
 
